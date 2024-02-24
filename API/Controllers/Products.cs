@@ -23,9 +23,10 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public string GetProduct(int id)
+        public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            return "this will be a single product";
+            var product = await _context.Products.FindAsync(id);
+            return product;
         }
     }
 }
