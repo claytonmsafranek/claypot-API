@@ -55,6 +55,24 @@ app.MapGet("/weatherforecast", () =>
 // Map custom controllers
 app.MapControllers();
 
+// apply db migrations at startup
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+var context = services.GetRequiredService<StoreContext>();
+var logger = services.GetRequiredService<ILogger<Program>>();
+// try to migrate our db
+try
+{
+    // this will also create the db it it does not already exist
+    await context.Database.MigrateAsync();
+    // seed data
+    await StoreContextSeed.SeedAsync(context);
+}
+catch (Exception ex)
+{
+    logger.LogError(ex, "An error occured during databse migration");
+}
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
