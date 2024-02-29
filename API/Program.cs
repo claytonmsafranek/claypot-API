@@ -21,6 +21,9 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 // AddScoped provides for duration of http request
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
+// add in generic repository service
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
