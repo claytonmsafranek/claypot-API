@@ -36,6 +36,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// tell the api to serve static content too
+app.UseStaticFiles();
+
 app.UseHttpsRedirection();
 
 var summaries = new[]
