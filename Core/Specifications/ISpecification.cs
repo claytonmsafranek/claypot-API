@@ -13,5 +13,7 @@ namespace Core.Specifications
         Expression<Func<T, bool>> Criteriea { get; }
         // this is the 'includes' for attaching objects in linq query
         List<Expression<Func<T, object>>> Includes { get; }
+        Expression<Func<T, object>> OrderBy { get; }
+        Expression<Func<T, object>> OrderByDescending { get; }
     }
 }

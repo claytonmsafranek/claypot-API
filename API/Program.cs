@@ -30,11 +30,6 @@ app.UseStaticFiles();
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
 // Map custom controllers
 app.MapControllers();
 
