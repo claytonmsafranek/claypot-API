@@ -28,6 +28,9 @@ if (app.Environment.IsDevelopment())
 // tell the api to serve static content too
 app.UseStaticFiles();
 
+// allow cors
+app.UseCors("CorsPolicy");
+
 app.UseHttpsRedirection();
 
 // Map custom controllers
